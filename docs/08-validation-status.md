@@ -7,13 +7,14 @@
 | 一手资料调研与路线取舍 | 已完成本轮 | `00-route-decision.md` 与 `01-research.md`；不代表设备试验完成 |
 | TypeSafe skill | 已安装并采用 | `.agents/skills/typesafe-ai` 与 `skills-lock.json` |
 | 公共 GitHub 仓库 | 已创建 | AndrewWayne/JevForSteve |
-| 核心自动化测试 | 已通过 44 项 | 校准、眨眼、候选、Jev 合同/过期、事件评估 |
-| TypeScript 与生产构建 | Linux / Node 24.19.0 通过 | renderer + Electron 编译 |
+| 核心自动化测试 | 已通过 44 项；Linux/Windows CI 均成功 | 校准、眨眼、候选、Jev 合同/过期、事件评估 |
+| TypeScript 与生产构建 | 本地 Node 24.19.0 + Linux/Windows CI 通过 | renderer + Electron 编译 |
 | 浏览器界面检查 | 未完成 | 当前云浏览器禁止打开本地应用地址；没有伪造界面截图或声称完成实测 |
 | 模型 assets 下载 | 已完成 | 官方模型 3,758,596 bytes；SHA-256 已固定在下载脚本 |
 | 摄像头视线精度 | 未验证 | 当前环境无实际用户相机/注视标签 |
 | 主动眨眼真人可靠性 | 未验证 | 模拟时序测试不是自然/主动分类实验 |
-| Windows UIA/文字/滚动 | 代码实现，未实机验收 | 当前执行环境为 Linux |
+| Windows helper 语法 | Windows CI 通过 | 只解析脚本，不执行桌面动作 |
+| Windows UIA/文字/滚动 | 代码实现，未实机验收 | CI 不代表交互式桌面验收 |
 | Windows 安装包 | 未构建/未签名 | 需目标平台打包与验收 |
 | Jev 合成请求 dry-run | 已通过 | 不联网；fixture 明确标为 synthetic |
 | 匿名事件评估脚本 | 已通过合成样例 | 包含弃权和错误，不将其计为真人证据 |
@@ -32,3 +33,7 @@
 - 工具栏等小目标仍需后续自适应大目标路径；大字母组通过不代表全 UI 能独立眼控。
 
 这些限制决定下一轮研发的优先级，具体见 `06-development-plan.md`。
+
+## 本轮构建证据
+
+[GitHub Actions Check #1](https://github.com/AndrewWayne/JevForSteve/actions/runs/35616824107)：提交 `fb6f100a938a9b6e615255f2fbc16b946659196a`，`core-and-build (ubuntu-latest)` 与 `core-and-build (windows-latest)` 均为 success。Windows 额外通过 PowerShell 语法解析。本次仅更新验证记录，没有改动经过测试的代码。
