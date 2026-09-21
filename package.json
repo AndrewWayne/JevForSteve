@@ -1,0 +1,71 @@
+{
+  "name": "jev-for-steve",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A local-first gaze and blink desktop companion, with bounded Jev assistance.",
+  "type": "module",
+  "main": "dist-electron/electron/main.js",
+  "author": "JevForSteve contributors",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build && tsc -p tsconfig.electron.json",
+    "preview": "vite preview --host 127.0.0.1",
+    "desktop": "npm run build && electron .",
+    "desktop:dev": "concurrently -k \"vite --host 127.0.0.1\" \"tsc -p tsconfig.electron.json && wait-on http://127.0.0.1:5173 && electron . --dev\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "assets": "node scripts/setup-assets.mjs",
+    "dist:win": "npm run build && electron-builder --win --x64",
+    "check": "npm run test && npm run build",
+    "jev:smoke": "node --env-file-if-exists=.env --import tsx scripts/jev-smoke.ts",
+    "evaluate": "node --import tsx scripts/evaluate.ts"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "1.0.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "concurrently": "10.0.5",
+    "electron": "44.4.3",
+    "electron-builder": "26.15.3",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.0",
+    "vitest": "5.0.1",
+    "wait-on": "9.1.0"
+  },
+  "build": {
+    "appId": "org.jevforsteve.desktop",
+    "productName": "JevForSteve",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "native/windows.ps1",
+        "to": "windows.ps1"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "JevForSteve-${version}-windows-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{"participant":"synthetic","session":"fixture-only","trial":"selection-1","kind":"selection","durationMs":1800,"expected":"a","actual":"a"}
+{"participant":"synthetic","session":"fixture-only","trial":"selection-2","kind":"selection","durationMs":2100,"expected":"b","actual":null}
+{"participant":"synthetic","session":"fixture-only","trial":"selection-3","kind":"selection","durationMs":1900,"expected":"c","actual":"b"}
+{"participant":"synthetic","session":"fixture-only","trial":"gaze-1","kind":"gaze","durationMs":33,"valid":true,"errorDip":20}
+{"participant":"synthetic","session":"fixture-only","trial":"gaze-2","kind":"gaze","durationMs":33,"valid":true,"errorDip":38}
+{"participant":"synthetic","session":"fixture-only","trial":"gaze-3","kind":"gaze","durationMs":33,"valid":false}
+{"participant":"synthetic","session":"fixture-only","trial":"blink-1","kind":"blink","durationMs":500,"expected":"intentional","actual":"commit"}
+{"participant":"synthetic","session":"fixture-only","trial":"blink-2","kind":"blink","durationMs":130,"expected":"natural","actual":"none"}
+{"participant":"synthetic","session":"fixture-only","trial":"reading-1","kind":"reading","durationMs":300000,"falseCommits":1}

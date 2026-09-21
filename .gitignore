@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-electron/
+release/
+.env
+.env.*
+!.env.example
+public/models/*
+!public/models/.gitkeep
+public/wasm/
+coverage/
+*.log
+*.tsbuildinfo
+recordings/
+profiles/
+.DS_Store
